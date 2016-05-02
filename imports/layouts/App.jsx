@@ -1,4 +1,3 @@
-import { Meteor } from 'meteor/meteor';
 import React from 'react';
 
 import ShowPostPage from '../pages/ShowPostPage.jsx';
@@ -9,7 +8,7 @@ export default class App extends React.Component {
     return (
       <main>
         <h1>Hello My React App</h1>
-        <ShowPostPage userId={Meteor.userId() || ''}/>
+        <ShowPostPage />
         <FormPage />
       </main>
     )

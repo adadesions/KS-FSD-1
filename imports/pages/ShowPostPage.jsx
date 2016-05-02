@@ -13,21 +13,7 @@ import LogoutButton from '../ui/LogoutButton.jsx';
 class ShowPostPage extends React.Component {
   constructor() {
     super();
-    this.state = {
-      userId: '',
-    }
-  }
 
-  // componentWillReceiveProps() {
-  //   this.setState({
-  //     userId: '',
-  //   })
-  // }
-
-  componentDidMount() {
-    this.setState({
-      userId: Meteor.userId(),
-    })
   }
 
   renderPost() {
@@ -43,13 +29,13 @@ class ShowPostPage extends React.Component {
   }
 
   isLogin() {
-    console.log(this.state.userId);
-    return this.state.userId ? <LogoutButton /> : <LoginForm />
+    console.log(this.props.userId);
+    return this.props.userId ? <LogoutButton /> : <LoginForm />
   }
 
   render() {
     return (
-      <section className='test' >
+      <section>
         { this.isLogin() }
         <ul>
           { this.renderPost() }
@@ -59,21 +45,15 @@ class ShowPostPage extends React.Component {
   }
 }
 
-ShowPostPage.propTypes = {
-  userId: PropTypes.string.isRequired,
-};
-
 export default createContainer((props) => {
   const subcribe = Meteor.subscribe('posts.ada3');
   let posts = [];
-
-  console.log(props.userId);
 
   if(subcribe.ready()) {
     posts = Posts.find().fetch();
   }
   return {
     posts,
-    userId: props.userId,
+    userId: Meteor.userId(),
   }
 }, ShowPostPage);
