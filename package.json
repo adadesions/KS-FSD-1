@@ -1,5 +1,5 @@
 {
-  "name": "kickstarter#1",
+  "name": "KS-FSD-1",
   "private": true,
   "scripts": {
     "start": "meteor run"
@@ -8,6 +8,7 @@
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.0.2",
     "react-addons-pure-render-mixin": "^15.0.2",
+    "react-addons-test-utils": "^15.0.2",
     "react-dom": "^15.0.2"
   }
 }
